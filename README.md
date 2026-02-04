@@ -1,3 +1,4 @@
+
 # 🌾 Farmer Advisory System
 
 A **machine learning–based Farmer Advisory System** that helps farmers make informed agricultural decisions by recommending suitable crops based on **soil type, weather parameters, and season**.  
@@ -60,7 +61,8 @@ This project provides a **data-driven crop recommendation system** that suggests
   - Humidity (%)
   - Rainfall (mm)
   - Season (Kharif, Rabi, Summer)
-- **Output:** Recommended Crop  
+- **Output:** Recommended Crop
+  <img width="804" height="555" alt="Screenshot 2026-02-04 191754" src="https://github.com/user-attachments/assets/16d19260-8fd0-4d03-b2a9-df76c0420c9e" />
 
 ---
 
