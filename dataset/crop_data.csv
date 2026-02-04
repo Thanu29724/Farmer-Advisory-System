@@ -1,0 +1,8 @@
+soil_type,temperature,humidity,rainfall,season,crop
+Loamy,25,60,200,Kharif,Rice
+Loamy,20,55,150,Rabi,Wheat
+Sandy,30,50,100,Kharif,Maize
+Clay,22,65,250,Kharif,Sugarcane
+Sandy,35,40,80,Summer,Millet
+Loamy,18,50,120,Rabi,Barley
+Clay,28,70,300,Kharif,Cotton

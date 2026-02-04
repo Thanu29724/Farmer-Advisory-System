@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Farmer Advisory System</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #f5f5f5;
+    }
+
+    .navbar {
+        background: #2e7d32;
+        padding: 15px 30px;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        color: #2e7d32;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-top: 20px;
+        display: block;
+    }
+
+    /* BIG OPTION BUTTONS */
+    .options {
+        display: flex;
+        gap: 12px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .options input {
+        display: none;
+    }
+
+    .options label {
+        padding: 14px 20px;
+        border-radius: 30px;
+        border: 2px solid #2e7d32;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #2e7d32;
+        transition: 0.3s;
+    }
+
+    .options input:checked + label {
+        background: #2e7d32;
+        color: white;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        margin-top: 25px;
+        width: 100%;
+        padding: 14px;
+        background: #e53935;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #c62828;
+    }
+
+    .output-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+
+    .output-header {
+        background: #1b5e20;
+        color: white;
+        padding: 20px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .output-body {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .crop-name {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2e7d32;
+        margin: 20px 0;
+    }
+
+    .tag {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 6px;
+        border-radius: 20px;
+        background: #e8f5e9;
+        color: #2e7d32;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="navbar">🌾 Farmer Advisory System</div>
+
+<div class="container">
+
+    <!-- INPUT FORM -->
+    <div class="card">
+        <h2>Enter Farm Details</h2>
+
+        <form action="/predict" method="post">
+
+            <label>Soil Type</label>
+            <div class="options">
+                <input type="radio" name="soil" id="loamy" value="Loamy" required>
+                <label for="loamy">Loamy</label>
+
+                <input type="radio" name="soil" id="sandy" value="Sandy">
+                <label for="sandy">Sandy</label>
+
+                <input type="radio" name="soil" id="clay" value="Clay">
+                <label for="clay">Clay</label>
+            </div>
+
+            <label>Temperature (°C)</label>
+            <input type="number" name="temperature" required>
+
+            <label>Humidity (%)</label>
+            <input type="number" name="humidity" required>
+
+            <label>Rainfall (mm)</label>
+            <input type="number" name="rainfall" required>
+
+            <label>Season</label>
+            <div class="options">
+                <input type="radio" name="season" id="kharif" value="Kharif" required>
+                <label for="kharif">Kharif</label>
+
+                <input type="radio" name="season" id="rabi" value="Rabi">
+                <label for="rabi">Rabi</label>
+
+                <input type="radio" name="season" id="summer" value="Summer">
+                <label for="summer">Summer</label>
+            </div>
+
+            <button type="submit">🎟️ Get Recommendation</button>
+        </form>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="output-card">
+        {% if result %}
+            <div class="output-header">Crop Recommendation</div>
+            <div class="output-body">
+                <div class="crop-name">🌱 {{ result }}</div>
+                <div class="tag">ML Powered</div>
+                <div class="tag">Soil Optimized</div>
+                <div class="tag">Weather Based</div>
+            </div>
+        {% else %}
+            <div class="output-body">
+                🎟️ Select options to view recommendation
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>
